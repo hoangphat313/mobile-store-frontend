@@ -13,6 +13,7 @@ export const WrapperStyleHeader = styled.div`
     font-size: 13px;
   }
 `
+
 export const WrapperContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,6 +24,7 @@ export const WrapperContainer = styled.div`
     justify-content: space-between;
   }
 `;
+
 export const WrapperLeft = styled.div`
   width: 910px;
   display: flex;
@@ -47,33 +49,6 @@ export const WrapperRight = styled.div`
     margin-left: 0;
   }
 `;
-export const WrapperListOrder = styled.div`
-
-`
-
-export const WrapperItemOrder = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 9px 16px;
-  background: #fff;
-  margin-top: 12px;
-`
-
-export const WrapperPriceDiscount = styled.span`
-  color: #999;
-  font-size: 12px;
-  text-decoration: line-through;
-  margin-left: 4px;
-`
-export const WrapperCountOrder = styled.div`
-  display: flex;
-  align-items: center;
-  width: 84px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`
-
-
 
 export const WrapperInfo = styled.div`
   padding: 17px 20px;
@@ -81,23 +56,23 @@ export const WrapperInfo = styled.div`
   background: #fff;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
-  width: 100%
+  width: 100%;
 `
 
 export const WrapperTotal = styled.div`
   display: flex;
-   align-items: flex-start; 
-   justify-content: space-between;
-    padding: 17px 20px;
-    background: #fff ;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
+  align-items: flex-start; 
+  justify-content: space-between;
+  padding: 17px 20px;
+  background: #fff;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
 `
 
 export const Lable = styled.span`
   font-size: 12px;
   color: #000;
-  font-weight: bold
+  font-weight: bold;
 `
 
 export const WrapperRadio = styled(Radio.Group)`
@@ -109,8 +84,13 @@ export const WrapperRadio = styled(Radio.Group)`
   height: 100px;
   padding: 16px;
   font-weight: normal;
-  display:flex;
+  display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 12px;
+  }
 `
