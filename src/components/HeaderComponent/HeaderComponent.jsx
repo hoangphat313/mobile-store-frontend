@@ -119,7 +119,6 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                             </Popover>
                         ) : (
                             <div onClick={handlerNavigateLogin} style={{ cursor: 'pointer' }}>
-                                <WrapperTextHeaderSmall>Đăng nhập/ Đăng ký</WrapperTextHeaderSmall>
                                 <div>
                                     <WrapperTextHeaderSmall>Tài Khoản</WrapperTextHeaderSmall>
                                     <CaretDownOutlined />
