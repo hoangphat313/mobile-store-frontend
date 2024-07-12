@@ -27,7 +27,7 @@ const HomePage = () => {
   const searchDebounce = useDebounce(searchProduct, 1000);
 
   const [loading, setLoading] = useState(false);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(5);
   const [typeProducts, setTypeProducts] = useState([]);
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const HomePage = () => {
               disabled={
                 products?.total === products?.data?.length || products?.totalPage === 1
               }
-              onClick={() => setLimit((prev) => prev + 6)}
+              onClick={() => setLimit((prev) => prev + 5)}
             />
           </div>
         </Container>

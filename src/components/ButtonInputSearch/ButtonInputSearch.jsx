@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 const StyledInputComponent = styled(InputComponent)`
     flex: 1;
     min-width: 150px;
-    max-width: 400px; 
+    max-width: 500px; 
 
     @media (max-width: 820px) {
         width: 100%;

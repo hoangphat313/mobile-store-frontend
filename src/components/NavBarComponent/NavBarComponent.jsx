@@ -20,7 +20,7 @@ const NavBarComponent = () => {
 
     return (
         <div style={{ height: '100%', width: '100%', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRight: '1px solid #ccc' }}>
-            <WrapperLableText>Product Type</WrapperLableText>
+            <WrapperLableText>Loại Sản Phẩm</WrapperLableText>
             <div style={{ margin: '0 auto', marginBottom: '20px' }}>
                 {typeProducts.map((item) => {
                     return (
