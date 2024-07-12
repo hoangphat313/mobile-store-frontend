@@ -6,7 +6,7 @@ export const WrapperHeader = styled(Row)`
     align-items: center;
     background-color: #111111;
     padding: 0 20px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     @media (max-width: 768px) {
         padding: 0 10px;
