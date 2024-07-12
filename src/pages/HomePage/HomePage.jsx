@@ -93,7 +93,6 @@ const HomePage = () => {
               />
             ))}
           </WrapperProducts>
-
           <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
             <WrapperButtonMore
               textbutton={isPreviousData ? "Load more..." : "Xem Thêm"}

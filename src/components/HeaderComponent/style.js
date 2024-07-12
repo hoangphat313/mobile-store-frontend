@@ -1,5 +1,5 @@
-import { Row, Col } from "antd";
 import styled from "styled-components";
+import { Row } from "antd";
 
 export const WrapperHeader = styled(Row)`
     height: 70px;
@@ -8,15 +8,16 @@ export const WrapperHeader = styled(Row)`
     padding: 0 20px;
     justify-content: space-around;
 
-    @media (max-width: 768px) {
-        padding: 0 10px;
+    @media (max-width: 820px) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
     }
 `;
 
 export const WrapperTextHeader = styled.span`
     font-size: 25px;
     color: #fff;
-    margin-left: 0;
     font-weight: bold;
     font-family: Arial, sans-serif;
     text-shadow: 2px 2px 4px #000000;
@@ -26,7 +27,7 @@ export const WrapperTextHeader = styled.span`
         color: rgb(26, 148, 255);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
         font-size: 20px;
     }
 `;
@@ -38,7 +39,14 @@ export const WrapperHeaderAccount = styled.div`
     gap: 8px;
     font-size: 15px;
 
-    @media (max-width: 768px) {
+    img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 820px) {
         font-size: 12px;
     }
 `;
@@ -57,15 +65,23 @@ export const WrapperTextHeaderSmall = styled.span`
         border-radius: 4px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
         font-size: 12px;
     }
 `;
 
-export const WraperContextPupop = styled.p`
+export const WrapperContextPopup = styled.p`
     cursor: pointer;
 
     &:hover {
         color: rgb(26, 148, 255);
+    }
+`;
+
+export const CartWrapper = styled.div`
+    @media (max-width: 820px) {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
     }
 `;

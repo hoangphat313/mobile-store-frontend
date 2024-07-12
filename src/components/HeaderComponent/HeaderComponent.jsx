@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Badge, Col, Popover } from "antd";
+import { Badge, Popover } from "antd";
 import { UserOutlined, CaretDownOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import ButtonInputSearch from "../ButtonInputSearch/ButtonInputSearch";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,12 +10,14 @@ import { resetUser } from '../../redux/slides/userSlide';
 import { searchProduct } from "../../redux/slides/productSlide";
 import imgLogo from "../../assets/images/logo-login_2.png";
 import {
-    WraperContextPupop,
+    WrapperContextPopup,
     WrapperHeader,
     WrapperHeaderAccount,
     WrapperTextHeader,
-    WrapperTextHeaderSmall
+    WrapperTextHeaderSmall,
+    CartWrapper
 } from "./style";
+import styled from "styled-components";
 
 const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
     const navigate = useNavigate();
@@ -49,12 +51,12 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
 
     const content = (
         <div>
-            <WraperContextPupop onClick={() => handleClickNavigate('profile')}>Thông tin người dùng</WraperContextPupop>
+            <WrapperContextPopup onClick={() => handleClickNavigate('profile')}>Thông tin người dùng</WrapperContextPopup>
             {user?.isAdmin && (
-                <WraperContextPupop onClick={() => handleClickNavigate('admin')}>Quản lí hệ thống</WraperContextPupop>
+                <WrapperContextPopup onClick={() => handleClickNavigate('admin')}>Quản lí hệ thống</WrapperContextPopup>
             )}
-            <WraperContextPupop onClick={() => handleClickNavigate(`my-order`)}>Đơn hàng của tôi</WraperContextPupop>
-            <WraperContextPupop onClick={() => handleClickNavigate()}>Đăng xuất</WraperContextPupop>
+            <WrapperContextPopup onClick={() => handleClickNavigate(`my-order`)}>Đơn hàng của tôi</WrapperContextPopup>
+            <WrapperContextPopup onClick={() => handleClickNavigate()}>Đăng xuất</WrapperContextPopup>
         </div>
     );
 
@@ -83,43 +85,40 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
 
     return (
         <WrapperHeader>
-            <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
-                <img src={imgLogo} alt="logo" style={{ height: '50px', width: '50px', marginRight: '10px' }} />
+            <LogoWrapper onClick={() => navigate('/')}>
+                <img src={imgLogo} alt="logo" />
                 <WrapperTextHeader>AuraTech</WrapperTextHeader>
-            </div>
+            </LogoWrapper>
             {!isHiddenSearch && (
-                <Col xs={0} sm={14}>
+                <SearchWrapper>
                     <ButtonInputSearch
                         size="large"
                         bordered={false}
-
                         textbutton="Search"
                         placeholder="Bạn tìm gì hôm nay..."
                         onChange={onSearch}
                     />
-                </Col>
+                </SearchWrapper>
             )}
-            <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <AccountWrapper>
                 <Loading isLoading={loading}>
                     <WrapperHeaderAccount>
                         {userAvatar ? (
-                            <img src={userAvatar} alt="avatar" style={{
-                                height: '40px',
-                                width: '40px',
-                                borderRadius: '50%',
-                                objectFit: 'cover'
-                            }} />
+                            <img style={{ cursor: 'pointer' }} src={userAvatar} alt="avatar" />
                         ) : (
                             <UserOutlined style={{ fontSize: '30px' }} />
                         )}
                         {user?.access_token ? (
                             <Popover content={content} trigger="click" open={isOpenPopup}>
-                                <div style={{ cursor: 'pointer', maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => setIsOpenPopup((prev) => !prev)}>
-                                    {userName?.length ? userName : user?.email}
+                                <div style={{
+                                    cursor: 'pointer', maxWidth: 100, overflow: 'hidden',
+                                    textOverflow: 'ellipsis'
+                                }}
+                                    onClick={() => setIsOpenPopup((prev) => !prev)}>{userName?.length ? userName : user?.email}
                                 </div>
                             </Popover>
                         ) : (
-                            <div onClick={handlerNavigateLogin} style={{ cursor: 'pointer' }}>
+                            <div onClick={handlerNavigateLogin}>
                                 <WrapperTextHeaderSmall>Đăng nhập/ Đăng ký</WrapperTextHeaderSmall>
                                 <div>
                                     <WrapperTextHeaderSmall>Tài Khoản</WrapperTextHeaderSmall>
@@ -130,16 +129,45 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
                     </WrapperHeaderAccount>
                 </Loading>
                 {!isHiddenCart && (
-                    <div>
+                    <CartWrapper>
                         <Badge count={order?.orderItems?.length} size="small" onClick={() => navigate('/order')}>
                             <ShoppingCartOutlined style={{ fontSize: '30px', color: '#fff', cursor: 'pointer' }} />
                         </Badge>
-                        <WrapperTextHeaderSmall onClick={() => navigate('/order')}></WrapperTextHeaderSmall>
-                    </div>
+                    </CartWrapper>
                 )}
-            </div>
+            </AccountWrapper>
         </WrapperHeader>
     );
 };
 
 export default HeaderComponent;
+
+const LogoWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+        height: 50px;
+        width: 50px;
+        margin-right: 10px;
+    }
+`;
+
+const SearchWrapper = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 400px; 
+
+    @media (max-width: 820px) {
+        flex: 2;
+        max-width: 100%; 
+    }
+`;
+
+const AccountWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+`;

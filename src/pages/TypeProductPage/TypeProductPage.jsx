@@ -19,7 +19,7 @@ const TypeProductPage = () => {
 
     const [paginate, setPaginate] = useState({
         page: 0,
-        limit: 2,
+        limit: 5,
         total: 1,
     });
 
@@ -39,7 +39,7 @@ const TypeProductPage = () => {
         if (state) {
             fetchProductType(state, paginate.page, paginate.limit);
         }
-    }, [state, paginate.page, paginate.limit]); // Watch paginate state directly
+    }, [state, paginate.page, paginate.limit]);
 
     const onChange = (current, pageSize) => {
         setPaginate({ ...paginate, page: current - 1, limit: pageSize });
