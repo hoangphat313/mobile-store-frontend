@@ -52,8 +52,6 @@ export const WrapperTextHeaderSmall = styled.span`
     &:hover {
         background-color: var(--primary-color);
         color: #7743DB;
-        font-weight: 700;
-        font-size: 18px;
         border-radius: 4px;
     }
 
